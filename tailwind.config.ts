@@ -1,0 +1,28 @@
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './lib/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['var(--font-display)', '-apple-system', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Times New Roman', 'serif'],
+        sans: ['var(--font-sans)', '-apple-system', 'sans-serif'],
+        mono: ['var(--font-mono)', 'monospace'],
+      },
+      maxWidth: {
+        container: '1240px',
+      },
+      transitionTimingFunction: {
+        spring: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
+    },
+  },
+  plugins: [],
+}
+
+export default config
