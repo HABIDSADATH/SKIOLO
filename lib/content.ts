@@ -33,6 +33,7 @@ export const nav = {
     { label: 'Methodology', href: '#methodology' },
     { label: 'Journey', href: '#journey' },
     { label: 'Workshops', href: '#workshops' },
+    { label: 'Courses', href: '#courses' },
   ],
 }
 

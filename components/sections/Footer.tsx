@@ -7,8 +7,8 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           {/* About column */}
-          <div className="footer-col">
-            <Logo height={88} />
+          <div className="footer-col footer-col-about">
+            <Logo height={56} />
             <div className="footer-about">
               <p>{footer.about}</p>
             </div>
