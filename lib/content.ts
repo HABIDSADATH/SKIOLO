@@ -247,6 +247,80 @@ export const workshops = {
   },
 }
 
+export type CourseTierTone = 'basic' | 'standard' | 'premium'
+
+export type CoursePackage = {
+  tier: string
+  name: string
+  price: number
+  period: string
+  features: string[]
+  cta: {
+    label: string
+    href: string
+  }
+  tone: CourseTierTone
+  featuredLabel?: string
+}
+
+const courseWhatsAppHref = (message: string) => `${siteConfig.whatsapp}?text=${encodeURIComponent(message)}`
+
+export const courses: CoursePackage[] = [
+  {
+    tier: 'BASIC',
+    name: 'Basic',
+    price: 999,
+    period: 'one-time',
+    features: [
+      '3 months recorded course access',
+      '3 months Table Talk community membership',
+      'Self-paced learning',
+      'Mobile and desktop access',
+    ],
+    cta: {
+      label: 'Choose Basic',
+      href: courseWhatsAppHref("Hi, I'd like to enrol in the Basic course package (₹999)."),
+    },
+    tone: 'basic',
+  },
+  {
+    tier: 'STANDARD',
+    name: 'Standard',
+    price: 1499,
+    period: 'one-time',
+    features: [
+      '1 year recorded course access',
+      '2 live classes every month on business topics',
+      '6 months Table Talk community membership',
+      'All Basic package features',
+    ],
+    cta: {
+      label: 'Choose Standard',
+      href: courseWhatsAppHref("Hi, I'd like to enrol in the Standard course package (₹1499)."),
+    },
+    tone: 'standard',
+  },
+  {
+    tier: 'PREMIUM',
+    name: 'Premium',
+    price: 1999,
+    period: 'one-time',
+    features: [
+      '1 year recorded course access',
+      '2 live classes every month on business topics',
+      'Workbook with frameworks and templates',
+      '1 year Table Talk community membership',
+      'Priority support',
+    ],
+    cta: {
+      label: 'Choose Premium',
+      href: courseWhatsAppHref("Hi, I'd like to enrol in the Premium course package (₹1999)."),
+    },
+    tone: 'premium',
+    featuredLabel: 'MOST POPULAR',
+  },
+]
+
 // ─── TESTIMONIALS ────────────────────────────────────────────
 export const testimonials = {
   eyebrow: 'In Their Words',

@@ -6,6 +6,7 @@ import Methodology from '@/components/sections/Methodology'
 import Journey from '@/components/sections/Journey'
 import Services from '@/components/sections/Services'
 import Workshops from '@/components/sections/Workshops'
+import Courses from '@/components/sections/Courses'
 import Testimonials from '@/components/sections/Testimonials'
 import Social from '@/components/sections/Social'
 import FinalCta from '@/components/sections/FinalCta'
@@ -23,6 +24,7 @@ export default function Home() {
         <Journey />
         <Services />
         <Workshops />
+        <Courses />
         <Testimonials />
         <Social />
         <FinalCta />

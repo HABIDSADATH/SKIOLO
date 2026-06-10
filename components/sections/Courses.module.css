@@ -1,0 +1,290 @@
+/* ─── GRID ───────────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: start;
+  padding-top: 20px; /* breathing room for the MOST POPULAR label */
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 0;
+  }
+}
+
+/* ─── CARD WRAPPER ───────────────────────────────────────── */
+
+.cardWrap {
+  position: relative;
+}
+
+.premiumWrap {
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 901px) {
+  .premiumWrap {
+    transform: scale(1.03);
+  }
+}
+
+/* MOST POPULAR label */
+.popularLabel {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--blue-bright), var(--cyan));
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: white;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px -4px var(--glow);
+  z-index: 10;
+}
+
+/* ─── BASE CARD ──────────────────────────────────────────── */
+
+.card {
+  border-radius: 22px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  transform-style: preserve-3d;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Tilt radial-glow overlay */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 20%),
+    rgba(96, 165, 250, 0.15),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* ─── BASIC ──────────────────────────────────────────────── */
+
+.cardBasic {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+}
+
+.cardBasic:hover {
+  border-color: var(--border-blue);
+  box-shadow: 0 16px 36px -16px var(--glow);
+}
+
+/* ─── STANDARD ───────────────────────────────────────────── */
+
+.cardStandard {
+  background: var(--card-bg-strong);
+  border: 1px solid rgba(96, 165, 250, 0.22);
+}
+
+.cardStandard:hover {
+  border-color: var(--border-blue);
+  box-shadow: 0 20px 44px -18px var(--glow);
+}
+
+/* ─── PREMIUM ────────────────────────────────────────────── */
+
+.cardPremium {
+  border: 1.5px solid var(--blue-bright);
+  box-shadow:
+    0 0 0 1px rgba(96, 165, 250, 0.12),
+    0 24px 52px -20px rgba(59, 130, 246, 0.28);
+}
+
+:global([data-theme="dark"]) .cardPremium {
+  background: linear-gradient(
+    160deg,
+    rgba(59, 130, 246, 0.18) 0%,
+    rgba(11, 26, 58, 0.58) 55%,
+    rgba(6, 182, 212, 0.08) 100%
+  );
+}
+
+:global([data-theme="light"]) .cardPremium {
+  background: linear-gradient(
+    160deg,
+    rgba(59, 130, 246, 0.06) 0%,
+    #ffffff 55%,
+    rgba(6, 182, 212, 0.03) 100%
+  );
+}
+
+.cardPremium:hover {
+  border-color: var(--sky);
+  box-shadow:
+    0 0 0 1px rgba(96, 165, 250, 0.3),
+    0 32px 64px -20px rgba(59, 130, 246, 0.48);
+}
+
+/* ─── TIER BADGE ─────────────────────────────────────────── */
+
+.tierBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  align-self: flex-start;
+}
+
+.tierBadgeBasic {
+  background: rgba(100, 116, 139, 0.12);
+  border: 1px solid rgba(100, 116, 139, 0.25);
+  color: var(--text-dim);
+}
+
+.tierBadgeStandard {
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  color: var(--sky);
+}
+
+.tierBadgePremium {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(6, 182, 212, 0.16));
+  border: 1px solid rgba(96, 165, 250, 0.45);
+  color: var(--blue-bright);
+}
+
+/* ─── COURSE NAME ────────────────────────────────────────── */
+
+.courseName {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+/* ─── PRICE ──────────────────────────────────────────────── */
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.priceCurrency {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(180deg, var(--sky) 0%, var(--blue-bright) 60%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.priceAmount {
+  font-family: var(--font-display);
+  font-size: 60px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, var(--sky) 0%, var(--blue-bright) 50%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: filter 0.3s var(--ease);
+}
+
+.card:hover .priceAmount {
+  filter: brightness(1.15);
+}
+
+.pricePeriod {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  margin-bottom: 22px;
+  margin-top: 4px;
+}
+
+/* ─── DIVIDER ────────────────────────────────────────────── */
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 20px;
+}
+
+/* ─── FEATURES ───────────────────────────────────────────── */
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  flex: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  color: var(--green);
+  margin-top: 1px;
+}
+
+/* ─── FOOTER NOTE ────────────────────────────────────────── */
+
+.footerNote {
+  text-align: center;
+  margin-top: 36px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+}
